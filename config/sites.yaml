@@ -1,0 +1,14 @@
+# Λίστα σελίδων προς σάρωση.
+# Μία καταχώρηση για κάθε σελίδα — "label" είναι απλά ένα
+# αναγνωρίσιμο όνομα για την αναφορά (δεν επηρεάζει τη σάρωση).
+#
+# Παράδειγμα:
+# sites:
+#   - url: "https://www.example.gr/anakoinoseis/some-page"
+#     label: "Ανακοινώσεις Φοιτητών"
+#   - url: "https://www.example.gr/proslipseis"
+#     label: "Προκηρύξεις Θέσεων"
+
+sites:
+  - url: "https://data.gov.gr/"
+    label: "Test site"

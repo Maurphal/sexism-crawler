@@ -1,0 +1,39 @@
+name: Σάρωση Συμπεριληπτικής Γλώσσας
+
+on:
+  schedule:
+    # Κάθε Δευτέρα 06:00 UTC. Άλλαξε το cron αν θες άλλη συχνότητα.
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}   # επιτρέπει χειροκίνητη εκτέλεση από το tab "Actions"
+
+permissions:
+  contents: write   # χρειάζεται για να κάνει commit τα αποτελέσματα πίσω στο repo
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Σάρωση σελίδων
+        run: python -m src.crawler
+
+      - name: Δημιουργία HTML αναφοράς
+        run: python -m src.report
+
+      - name: Commit αποτελεσμάτων
+        run: |
+          git config user.name "sexism-crawler-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add results/latest.json docs/index.html
+          git diff --staged --quiet || git commit -m "Αυτόματη σάρωση $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
