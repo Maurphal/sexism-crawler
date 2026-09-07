@@ -1,12 +1,12 @@
 {
-  "run_started_at": "2026-08-31T12:22:26.596055+00:00",
+  "run_started_at": "2026-09-07T11:16:39.986153+00:00",
   "sites_scanned": 1,
   "total_findings": 4,
   "results": [
     {
       "url": "https://data.gov.gr/",
       "label": "Test site --> https://data.gov.gr/",
-      "scanned_at": "2026-08-31T12:22:28.951687+00:00",
+      "scanned_at": "2026-09-07T11:16:42.600479+00:00",
       "ok": true,
       "text_length": 3986,
       "findings_count": 4,
